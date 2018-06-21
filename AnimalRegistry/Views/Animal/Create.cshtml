@@ -5,6 +5,10 @@
 
 <h1 class="page-title">Добавить животное</h1>
 
+<div class="nav-link">
+    @Html.ActionLink("Назад", "List", "Animal", null, new { @class = "nav-link" })
+</div>
+
 @using (Html.BeginForm("Create", "Animal", FormMethod.Post))
 {
     <table>

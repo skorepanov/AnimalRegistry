@@ -5,7 +5,9 @@
 
 <h1 class="page-title">@ViewBag.Title</h1>
 
-@Html.ActionLink("Назад", "List")
+<div class="nav-link">
+    @Html.ActionLink("Назад", "List", "Animal", null, new { @class = "nav-link" })
+</div>
 
 @using (Html.BeginForm("Edit", "Animal", FormMethod.Post))
 {

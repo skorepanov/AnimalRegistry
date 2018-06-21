@@ -6,7 +6,9 @@
 
 <h1 class="page-title">@ViewBag.Title</h1>
 
-@Html.ActionLink("Добавить", "Create")
+<div class="nav-link">
+    @Html.ActionLink("Добавить", "Create", "Animal", null, new { @class = "nav-link" })
+</div>
 
 <table class="data-list">
     <tr>
