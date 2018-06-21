@@ -20,11 +20,63 @@ namespace AnimalRegistry.Controllers
             return View();
         }
 
-        public async Task<IActionResult> List()
+        public async Task<IActionResult> List(AnimalSortState sortOrder = AnimalSortState.ClassAsc)
         {
-            return View(await db.Animals.ToListAsync());
+            IQueryable<Animal> animals = null;
+
+            // сохранить сортировку чтобы при повторном клике менялось направление сортировки
+            ViewBag.ClassSort = sortOrder == AnimalSortState.ClassAsc ? AnimalSortState.ClassDesc : AnimalSortState.ClassAsc;
+            ViewBag.GenderSort = sortOrder == AnimalSortState.GenderAsc ? AnimalSortState.GenderDesc : AnimalSortState.GenderAsc;
+            ViewBag.NameSort = sortOrder == AnimalSortState.NameAsc ? AnimalSortState.NameDesc : AnimalSortState.NameAsc;
+            ViewBag.LocationSort = sortOrder == AnimalSortState.LocationAsc ? AnimalSortState.LocationDesc : AnimalSortState.LocationAsc;
+            ViewBag.WeightSort = sortOrder == AnimalSortState.WeightAsc ? AnimalSortState.WeightDesc : AnimalSortState.WeightAsc;
+            ViewBag.DateOfWeighingSort =
+                sortOrder == AnimalSortState.DateOfWeighingAsc ? AnimalSortState.DateOfWeighingDesc : AnimalSortState.DateOfWeighingAsc;
+
+            switch (sortOrder)
+            {
+                case AnimalSortState.ClassDesc:
+                    animals = db.Animals.OrderByDescending(a => a.Class);
+                    break;
+                case AnimalSortState.GenderAsc:
+                    animals = db.Animals.OrderBy(a => a.Gender);
+                    break;
+                case AnimalSortState.GenderDesc:
+                    animals = db.Animals.OrderByDescending(a => a.Gender);
+                    break;
+                case AnimalSortState.NameAsc:
+                    animals = db.Animals.OrderBy(a => a.Name);
+                    break;
+                case AnimalSortState.NameDesc:
+                    animals = db.Animals.OrderByDescending(a => a.Name);
+                    break;
+                case AnimalSortState.LocationAsc:
+                    animals = db.Animals.OrderBy(a => a.Location);
+                    break;
+                case AnimalSortState.LocationDesc:
+                    animals = db.Animals.OrderByDescending(a => a.Location);
+                    break;
+                case AnimalSortState.WeightAsc:
+                    animals = db.Animals.OrderBy(a => a.Weight);
+                    break;
+                case AnimalSortState.WeightDesc:
+                    animals = db.Animals.OrderByDescending(a => a.Weight);
+                    break;
+                case AnimalSortState.DateOfWeighingAsc:
+                    animals = db.Animals.OrderBy(a => a.DateOfWeighing);
+                    break;
+                case AnimalSortState.DateOfWeighingDesc:
+                    animals = db.Animals.OrderByDescending(a => a.DateOfWeighing);
+                    break;
+                default:
+                    animals = db.Animals.OrderBy(a => a.Class);
+                    break;
+            }
+
+            return View(await animals.AsNoTracking().ToListAsync());
         }
 
+        #region Создание
         public IActionResult Create()
         {
             return View();
@@ -37,7 +89,9 @@ namespace AnimalRegistry.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("List");
         }
+        #endregion Создание
 
+        #region Редактирование
         public async Task<IActionResult> Edit(int? id)
         {
             if (id != null)
@@ -57,7 +111,9 @@ namespace AnimalRegistry.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("List");
         }
+        #endregion Редактирование
 
+        #region Удаление
         [HttpGet]
         [ActionName("Delete")]
         public async Task<IActionResult> ConfirmDelete(int? id)
@@ -85,5 +141,6 @@ namespace AnimalRegistry.Controllers
 
             return NotFound();
         }
+        #endregion Удаление
     }
 }
