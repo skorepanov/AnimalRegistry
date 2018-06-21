@@ -1,0 +1,38 @@
+﻿@model AnimalRegistry.Models.Animal
+@{
+    ViewBag.Title = "Удаление животного";
+}
+
+<div>
+    <dl class="description">
+        <dt>Вид</dt>
+        <dd>@Html.DisplayFor(a => a.Class)</dd>
+
+        <dt>Пол</dt>
+        <dd>@Html.DisplayFor(a => a.Gender)</dd>
+
+        <dt>Кличка</dt>
+        <dd>@Html.DisplayFor(a => a.Name)</dd>
+
+        <dt>Расположение</dt>
+        <dd>@Html.DisplayFor(a => a.Location)</dd>
+
+        @if (Model.Weight != null)
+        {
+            <dt>Масса</dt>
+            <dd>@Html.DisplayFor(a => a.Weight)</dd>
+        }
+
+        @if (Model.DateOfWeighing != null)
+        {
+            <dt>Дата взвешивания</dt>
+            <dd>@Html.DisplayFor(a => a.DateOfWeighing)</dd>
+        }
+    </dl>
+
+    <div>
+        <form asp-controller="Animal" asp-action="Delete" method="post">
+            <input type="submit" value="Удалить" class="btn-submit" />
+        </form>
+    </div>
+</div>

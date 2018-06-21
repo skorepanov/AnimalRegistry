@@ -57,5 +57,33 @@ namespace AnimalRegistry.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("List");
         }
+
+        [HttpGet]
+        [ActionName("Delete")]
+        public async Task<IActionResult> ConfirmDelete(int? id)
+        {
+            if (id != null)
+            {
+                Animal animal = await db.Animals.FirstOrDefaultAsync(a => a.Id == id);
+                if (animal != null)
+                    return View(animal);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id != null)
+            {
+                Animal animal = new Animal { Id = id.Value };
+                db.Entry(animal).State = EntityState.Deleted;
+                await db.SaveChangesAsync();
+                return RedirectToAction("List");
+            }
+
+            return NotFound();
+        }
     }
 }
