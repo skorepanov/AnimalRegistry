@@ -18,7 +18,7 @@ namespace AnimalRegistry.Models
             }
         }
 
-        public static IEnumerable<Animal> GetAnimals()
+        static IEnumerable<Animal> GetAnimals()
         {
             return new List<Animal>()
             {

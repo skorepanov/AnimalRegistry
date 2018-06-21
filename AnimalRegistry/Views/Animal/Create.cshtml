@@ -1,0 +1,38 @@
+﻿@model AnimalRegistry.Models.Animal
+@{
+    ViewBag.Title = "Добавление животного";
+}
+
+@using (Html.BeginForm("Create", "Animal", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>@Html.LabelFor(a => a.Class, "Вид")</td>
+            <td>@Html.TextBox("Class")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Gender, "Пол")</td>
+            <td>@Html.TextBox("Gender")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Name, "Кличка")</td>
+            <td>@Html.TextBox("Name")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Location, "Расположение")</td>
+            <td>@Html.TextBox("Location")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.Weight, "Масса (кг)")</td>
+            <td>@Html.TextBox("Weight")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(a => a.DateOfWeighing, "Дата взвешивания")</td>
+            <td><input type="date" id="DateOfWeighing" /></td>
+        </tr>
+    </table>
+
+    <div>
+        <input type="submit" value="Создать" class="btn-submit" />
+    </div>
+}

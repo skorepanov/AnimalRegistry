@@ -18,13 +18,13 @@ namespace AnimalRegistry
         {
             var host = CreateWebHostBuilder(args).Build();
 
-            using (var scope = host.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
+            //using (var scope = host.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
 
-                var animalContext = services.GetRequiredService<AnimalContext>();
-                AnimalContextSeed.SeedAsync(animalContext).Wait();
-            }
+            //    var animalContext = services.GetRequiredService<AnimalContext>();
+            //    AnimalContextSeed.SeedAsync(animalContext).Wait();
+            //}
 
             host.Run();
         }

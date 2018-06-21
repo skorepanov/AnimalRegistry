@@ -11,7 +11,7 @@ namespace AnimalRegistry.Models
         public AnimalContext(DbContextOptions<AnimalContext> options)
              : base(options)
         {
-
+            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

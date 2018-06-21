@@ -1,12 +1,11 @@
 ﻿@model AnimalRegistry.Models.Animal
 @{
-    string title = $"{Model.Class} по кличке {Model.Name}";
-    ViewBag.Title = title;
+    ViewBag.Title = $"{Model.Class} по кличке {Model.Name}";
 }
 
 <a href="/Animal/List">Назад</a>
 
-<h3>@title</h3>
+<h3>@ViewBag.Title</h3>
 
 @using (Html.BeginForm("Edit", "Animal", FormMethod.Post))
 {

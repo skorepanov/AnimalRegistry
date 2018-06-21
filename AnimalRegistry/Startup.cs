@@ -23,10 +23,12 @@ namespace AnimalRegistry
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            string connString = Configuration.GetConnectionString("DefaultConnection");
+            
+            services.AddDbContext<AnimalContext>(options =>
+                options.UseSqlServer(connString));
 
-            services.AddDbContext<AnimalContext>(a =>
-                a.UseInMemoryDatabase("AnimalRegistry"));
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
