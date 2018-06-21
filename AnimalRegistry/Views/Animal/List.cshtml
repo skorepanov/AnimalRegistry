@@ -5,3 +5,29 @@
 }
 
 <h1>Животные</h1>
+
+<div class="data-list">
+    <table>
+        <tr>
+            <th></th>
+            <th>Вид</th>
+            <th>Пол</th>
+            <th>Кличка</th>
+            <th>Расположение</th>
+            <th>Масса</th>
+            <th>Дата взвешивания</th>
+        </tr>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td><a href="/Animal/Edit/@animal.Id">Изменить</a></td>
+                <td>@animal.Class</td>
+                <td>@animal.Gender</td>
+                <td>@animal.Name</td>
+                <td>@animal.Location</td>
+                <td>@animal.Weight</td>
+                <td>@animal.DateOfWeighing</td>
+            </tr>
+        }
+    </table>
+</div>

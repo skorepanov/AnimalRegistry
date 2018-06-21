@@ -16,8 +16,16 @@ namespace AnimalRegistry.Controllers
 
         public IActionResult List()
         {
-            
-            return View();
+            var animals = AnimalContextSeed.GetAnimals();
+            return View(animals);
+        }
+
+        public IActionResult Edit(int id)
+        {
+            Animal animal = AnimalContextSeed.GetAnimals()
+                .Where(a => a.Id == id)
+                .FirstOrDefault();
+            return View(animal);
         }
     }
 }
