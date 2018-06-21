@@ -3,7 +3,7 @@
     ViewBag.Title = $"{Model.Class} по кличке {Model.Name}";
 }
 
-<a href="/Animal/List">Назад</a>
+@Html.ActionLink("Назад", "List")
 
 <h3>@ViewBag.Title</h3>
 

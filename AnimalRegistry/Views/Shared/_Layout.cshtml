@@ -7,13 +7,23 @@
 </head>
 
 <body>
-    <nav class="menu">
-        <ul>
-            <li><a href="/Animal/List">Животные</a></li>
-        </ul>
-    </nav>
+    <header>
+        <div class="container">
+            <div class="header-top clearfix">
+                <div class="header-logo">
+                    <a href="~/Animal/Index">
+                        <img src="@Url.Content("~/img/Logo.png")" alt="Учет животных">
+                    </a>
+                </div>
+                <ul class="main-nav clearfix">
+                    <li>@Html.ActionLink("Главная", "Index")</li>
+                    <li>@Html.ActionLink("Животные", "List")</li>
+                </ul>
+            </div>
+        </div>
+    </header>
 
-    <div>
+    <div class="content">
         @RenderBody()
     </div>
 
