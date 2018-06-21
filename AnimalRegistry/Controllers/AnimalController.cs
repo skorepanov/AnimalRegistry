@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AnimalRegistry.Models;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,12 @@ namespace AnimalRegistry.Controllers
     {
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult List()
+        {
+            
             return View();
         }
     }
