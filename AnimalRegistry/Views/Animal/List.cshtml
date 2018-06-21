@@ -42,7 +42,12 @@
             <td>@animal.Name</td>
             <td>@animal.Location</td>
             <td>@animal.Weight</td>
-            <td>@animal.DateOfWeighing</td>
+            <td>
+                @if (animal.DateOfWeighing != null)
+                {
+                    @animal.DateOfWeighing.Value.ToShortDateString();
+                }
+            </td>
             <td class="no-border">@Html.ActionLink("Удалить", "Delete", new { Id = animal.Id })</td>
         </tr>
     }

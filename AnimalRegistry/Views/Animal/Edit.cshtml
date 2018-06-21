@@ -36,7 +36,7 @@
         </tr>
         <tr>
             <td>@Html.LabelFor(a => a.DateOfWeighing, "Дата взвешивания")</td>
-            <td><input type="date" id="DateOfWeighing" value="@Model.DateOfWeighing" /></td>
+            <td>@Html.TextBox("DateOfWeighing", Model.DateOfWeighing.HasValue ? Model.DateOfWeighing.Value.ToShortDateString() : "")</td>
         </tr>
     </table>
 
