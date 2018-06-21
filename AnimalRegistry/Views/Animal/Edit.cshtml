@@ -3,9 +3,9 @@
     ViewBag.Title = $"{Model.Class} по кличке {Model.Name}";
 }
 
-@Html.ActionLink("Назад", "List")
+<h1 class="page-title">@ViewBag.Title</h1>
 
-<h3>@ViewBag.Title</h3>
+@Html.ActionLink("Назад", "List")
 
 @using (Html.BeginForm("Edit", "Animal", FormMethod.Post))
 {
