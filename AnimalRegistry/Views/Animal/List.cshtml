@@ -8,42 +8,40 @@
 
 @Html.ActionLink("Добавить", "Create")
 
-<div class="data-list">
-    <table>
+<table class="data-list">
+    <tr>
+        <th></th>
+        <th>
+            @Html.ActionLink("Вид", "List", new { sortOrder = ViewBag.ClassSort })
+        </th>
+        <th>
+            @Html.ActionLink("Пол", "List", new { sortOrder = ViewBag.GenderSort })
+        </th>
+        <th>
+            @Html.ActionLink("Кличка", "List", new { sortOrder = ViewBag.NameSort })
+        </th>
+        <th>
+            @Html.ActionLink("Расположение", "List", new { sortOrder = ViewBag.LocationSort })
+        </th>
+        <th>
+            @Html.ActionLink("Масса", "List", new { sortOrder = ViewBag.WeightSort })
+        </th>
+        <th>
+            @Html.ActionLink("Дата взвешивания", "List", new { sortOrder = ViewBag.DateOfWeighingSort })
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var animal in Model)
+    {
         <tr>
-            <th></th>
-            <th>
-                @Html.ActionLink("Вид", "List", new { sortOrder = ViewBag.ClassSort })
-            </th>
-            <th>
-                @Html.ActionLink("Пол", "List", new { sortOrder = ViewBag.GenderSort })
-            </th>
-            <th>
-                @Html.ActionLink("Кличка", "List", new { sortOrder = ViewBag.NameSort })
-            </th>
-            <th>
-                @Html.ActionLink("Расположение", "List", new { sortOrder = ViewBag.LocationSort })
-            </th>
-            <th>
-                @Html.ActionLink("Масса", "List", new { sortOrder = ViewBag.WeightSort })
-            </th>
-            <th>
-                @Html.ActionLink("Дата взвешивания", "List", new { sortOrder = ViewBag.DateOfWeighingSort })
-            </th>
-            <th></th>
+            <td class="no-border">@Html.ActionLink("Изменить", "Edit", new { Id = animal.Id })</td>
+            <td>@animal.Class</td>
+            <td>@animal.Gender</td>
+            <td>@animal.Name</td>
+            <td>@animal.Location</td>
+            <td>@animal.Weight</td>
+            <td>@animal.DateOfWeighing</td>
+            <td class="no-border">@Html.ActionLink("Удалить", "Delete", new { Id = animal.Id })</td>
         </tr>
-        @foreach (var animal in Model)
-        {
-            <tr>
-                <td>@Html.ActionLink("Изменить", "Edit", new { Id = animal.Id })</td>
-                <td>@animal.Class</td>
-                <td>@animal.Gender</td>
-                <td>@animal.Name</td>
-                <td>@animal.Location</td>
-                <td>@animal.Weight</td>
-                <td>@animal.DateOfWeighing</td>
-                <td>@Html.ActionLink("Удалить", "Delete", new { Id = animal.Id })</td>
-            </tr>
-        }
-    </table>
-</div>
+    }
+</table>

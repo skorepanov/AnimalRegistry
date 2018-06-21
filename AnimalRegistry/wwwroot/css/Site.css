@@ -58,16 +58,70 @@ header {
 
 
 /*Основное содержимое*/
+.content {
+    padding-bottom: 60px;
+}
+
 .page-title {
     margin: 0;
     margin-right: 180px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     font-weight: bold;
     font-size: 35px;
     line-height: 55px;
     font-family: "Georgia", serif;
     color: #a38b70;
 }
+
+
+/*Списковая страница*/
+.data-list {
+    width: 100%;
+    border-collapse: collapse;
+    line-height: 30px;
+}
+
+.data-list th {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.data-list td {
+    border: 1px solid #d8d8d8;
+}
+
+.data-list .no-border {
+    border: none;
+    padding-left: 5px;
+    padding-right: 0;
+}
+
+.data-list th,
+.data-list td {
+    padding: 10px 17px;
+}
+
+.data-list th a {
+    text-decoration: none;
+    color: #a38b70;
+}
+
+.data-list th a:active {
+    color: #a38b70;
+    opacity: 0.3;
+}
+
+.data-list td a {
+    text-decoration: none;
+    color: #a38b70;
+    opacity: 0.8;
+    font-size: 13px;
+}
+
+.data-list td a:active {
+    opacity: 0.3;
+}
+
 
 /*Подвал*/
 footer {
