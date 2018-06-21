@@ -30,18 +30,30 @@ namespace AnimalRegistry.Controllers
             return View();
         }
 
-        public IActionResult Edit(int id)
-        {
-            Animal animal = db.Animals
-                .Where(a => a.Id == id)
-                .FirstOrDefault();
-            return View(animal);
-        }
-
         [HttpPost]
         public async Task<IActionResult> Create(Animal animal)
         {
             db.Animals.Add(animal);
+            await db.SaveChangesAsync();
+            return RedirectToAction("List");
+        }
+
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id != null)
+            {
+                Animal animal = await db.Animals.FirstOrDefaultAsync(a => a.Id == id);
+                if (animal != null)
+                    return View(animal);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Animal animal)
+        {
+            db.Animals.Update(animal);
             await db.SaveChangesAsync();
             return RedirectToAction("List");
         }
